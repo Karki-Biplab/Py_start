@@ -1,0 +1,5 @@
+print(len(input("What is your name? ")))
+name = input("K ho timro nam nani?")
+length = str(len(name))
+print("timro nam " +name +" po ho")
+print("timro nam ma ta " +length+ " ota letters raixa hai! ")
