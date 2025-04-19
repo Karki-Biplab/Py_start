@@ -81,6 +81,17 @@ def nomem13_decode(text):
 
     return ' '.join(decoded)
 
+# ========== Binary Logic ==========
+def text_to_binary(text):
+    return ' '.join(format(ord(c), '08b') for c in text)
+
+def binary_to_text(binary):
+    try:
+        chars = binary.strip().split()
+        return ''.join(chr(int(b, 2)) for b in chars)
+    except ValueError:
+        return "❌ Invalid binary input!"
+
 # ========== Interface ==========
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -103,7 +114,9 @@ def main():
         print("1. Encode a message")
         print("2. Decode a message")
         print("3. Exit")
-        choice = input("\nChoose an option [1/2/3]: ").strip()
+        print("4. Encode to Binary")
+        print("5. Decode from Binary")
+        choice = input("\nChoose an option [1/2/3/4/5]: ").strip()
 
         if choice == "1":
             msg = input("\nEnter the message to ENCODE: ")
@@ -116,6 +129,14 @@ def main():
         elif choice == "3":
             print("\n👋 Exiting the Cipher Lab. Stay stealthy, agent 13.")
             break
+        elif choice == "4":
+            msg = input("\nEnter the message to convert to BINARY: ")
+            result = text_to_binary(msg)
+            print(f"\n💾 Binary Encoded:\n{result}")
+        elif choice == "5":
+            msg = input("\nEnter the BINARY to decode: ")
+            result = binary_to_text(msg)
+            print(f"\n💬 Decoded from Binary:\n{result}")
         else:
             print("\n❌ Invalid option. Try again!")
 
